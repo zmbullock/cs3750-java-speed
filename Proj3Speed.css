@@ -1,0 +1,22 @@
+body {
+    background-color: green;
+}
+
+h1 {
+    text-align: center;
+    color: orange;
+	font-style: oblique;
+	font-size: 150px;
+}
+
+.opponent {
+	text-align: center;
+}
+
+.gameAction {
+	text-align: center;
+}
+
+.player {
+	text-align: center;
+}
