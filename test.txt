@@ -1,0 +1,26 @@
+public boolean perform_move(int player, int player_hand_index, int game_stack_num);
+
+player should be 1 or 2
+player_hand_index should be 0-4
+game_stack_num should be 1 or 2
+
+Draw board, string separated by commas - sepparate to player
+[p2_deck(0 if empty, 1 if cards remain), num p2hand(0-5), draw 1(0 or 1), 
+ stack1 value(1-13), stack1 suit (0-3),
+ stack2 value(1-13), stack2 suit (0-3), draw 2(0 or 1), 
+ hand_card_1 value (1-13, 0 if no card), hand_card_1 suit(0-3), 
+ hand_card_2 value (1-13, 0 if no card), hand_card_2 suit(0-3),
+ hand_card_3 value (1-13, 0 if no card), hand_card_3 suit(0-3),
+ hand_card_4 value (1-13, 0 if no card), hand_card_4 suit(0-3),
+ hand_card_5 value (1-13, 0 if no card), hand_card_5 suit(0-3),
+ p1_deck(0 or 1)]
+ T
+ [p1_deck(0 if empty, 1 if cards remain), num p1hand(0-5), draw 1(0 or 1), 
+ stack1 value(1-13), stack1 suit (1-4),
+ stack2 value(1-13), stack2 suit (1-4), draw 2(0 or 1),
+ hand_card_1 value (1-13, 0 if no card), hand_card_1 suit(1-4),
+ hand_card_2 value (1-13, 0 if no card), hand_card_2 suit(1-4),
+ hand_card_3 value (1-13, 0 if no card), hand_card_3 suit(1-4),
+ hand_card_4 value (1-13, 0 if no card), hand_card_4 suit(1-4),
+ hand_card_5 value (1-13, 0 if no card), hand_card_5 suit(1-4),
+ p2_deck(0 or 1)]
