@@ -40,6 +40,9 @@ public class Game{
 			p2_side_stack.push(deck.draw());
 		}
 		
+		p1_hand = new Hand();
+		p2_hand = new Hand();
+		
 		game_stack1 = new Stack<Card>();
 		game_stack2 = new Stack<Card>();
 		game_stack1.push(deck.draw());
