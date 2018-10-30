@@ -71,10 +71,10 @@ public class Game{
 	}
 	
 	//performs the game move after checking if move is valid. sleep thread if board is locked
-	public void perform_move(int player, int player_hand_index, int game_stack_num) throws InterruptedException{
+	public boolean perform_move(int player, int player_hand_index, int game_stack_num) throws InterruptedException{
 		
 		if(!check_move(player, player_hand_index, game_stack_num)){
-			return;
+			return false;
 		}
 		Hand hand = null;
 		if(player == 1){
@@ -91,7 +91,7 @@ public class Game{
 			stack = game_stack1;
 		}
 		stack.push(hand.remove_card(player_hand_index));
-		update_board();
+		return true;
 	}
 	
 	//returns true if the two values allow a play per the rules
