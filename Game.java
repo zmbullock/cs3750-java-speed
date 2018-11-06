@@ -191,11 +191,14 @@ public class Game{
 		}
 		
 		if(p1_draw_stack.empty()){
-			board += "0";
+			board += "0,";
 		}
 		else {
-			board += "1";
+			board += "1,";
 		}
+		
+		board += check_for_win();
+		
 		//Middle of the return string
 		board += "T";
 		//
@@ -229,29 +232,27 @@ public class Game{
 			}
 		}
 		if(p2_draw_stack.empty()){
-			board += "0";
+			board += "0,";
 		}
 		else {
-			board += "1";
+			board += "1,";
 		}
-		
+		board += check_for_win();
 		//using interface, send current player hand, oposing player hand size, each card face up, and other decks/stacks if desired.
 		
 		return board;
 	}
 	
 	//return 0 if no winner, 1 if p1, 2 if p2
-	public boolean check_for_win(){
+	public int check_for_win(){
 		if(p1_hand.get_size() == 0 && p1_draw_stack.empty()){
-			winner = 1;
-			return true;
+			return 1;
 		}
 		else if (p2_hand.get_size() == 0 && p2_draw_stack.empty()){
-			winner = 2;
-			return true;
+			return 2;
 		}
 		else {
-			return false;
+			return 0;
 		}
 	}
 	
