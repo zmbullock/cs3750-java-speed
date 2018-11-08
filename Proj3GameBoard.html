@@ -11,7 +11,6 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 	-->
-	<script src="Proj3Speed.js"></script>
 	
     <title>CS3750 Speed</title>
 
@@ -35,21 +34,33 @@
 	</header>
 	
 	<main>
-
-			<h1> Speed </h1>
-
+			<div class="speed">
+				<h1> Speed </h1>
+			</div>
 
 
 			<form>
 				<div class="opponent">
-					<img id="oponentDeck" src="red-knights---b.png" alt="cc" style="width:150px;height:170px;">
 					<!-- <label type="label" id="oponentDeck" style="width:150px;height:100px;"> OponentDeck</label> -->
-					<img id="oponentCard1" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-					<img id="oponentCard2" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-					<img id="oponentCard3" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-					<img id="oponentCard4" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-					<img id="oponentCard5" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-
+					<div class="oCard">
+						<img id="oponentCard1" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					<div class="oCard">
+						<img id="oponentCard2" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					<div class="oCard">
+						<img id="oponentCard3" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					<div class="oCard">
+						<img id="oponentCard4" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					<div class="oCard">
+						<img id="oponentCard5" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					
+					<div id="playerDeck" class="card">
+						<img id="oponentDeck" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
 <!--					
 					<button type="button" id="oponentCard1" img src="testCard.jpg" alt="cc" style="width:100px;height:150px;">Card1</button>											
 					<button type="button" id="oponentCard2" value="btnSubmit" style="width:100px;height:150px;">Card2</button>
@@ -60,27 +71,48 @@
 					</div>
 
 				<div class="gameAction">
-					<img id="oponentDeck" src="red-knights---b.png" alt="cc" style="width:150px;height:170px;">
-					<img id="oponentCard4" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-					<img id="oponentCard5" src="testCard.jpg" alt="cc" style="width:100px;height:150px;">
-					<!-- <label type="label" id="activeDeck"> PlayDeck1</label> 
-					<button type="button" id="active1" value="btnSubmit" style="width:100px;height:150px;">Card1</button>
-					<button type="button" id="active2" value="btnSubmit" style="width:100px;height:150px;">Card2</button>
-					-->
-					<img id="oponentDeck" src="red-knights---b.png" alt="cc" style="width:150px;height:170px;">
-					<!-- <label type="label" id="activeDeck"> PlayDeck2</label> -->
+					<div id="playerDeck" class="card">
+						<img id="gameDeck1" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					<div class="card">
+						<img id="gameCard1" src="img/2H.png" alt="fc" style="width:100px;height:150px;">
+					</div>
+					<div class="card">
+						<img id="gameCard2" src="img/KD.png" alt="fc" style="width:100px;height:150px;">
+					</div>
+					<div id="playerDeck" class="card">
+						<img id="gameDeck2" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
 				</div>
 				
 				<div class="player">
-					<!-- <label type="label" id="oponentDeck" style="width:150px;height:100px;"> OponentDeck</label> -->
-										
-					<button type="button" id="playerCard1" value="btnSubmit" style="width:100px;height:150px;">Card1</button>
+					<div id="playerDeck" class="card">
+						<img id="oponentDeck" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					</div>
+					
+					<div id="c1" class="card">
+						<img id="playerCard1" src="img/AS.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+					</div>
+					<div id="c2" class="card">
+						<img id="playerCard2" src="img/9D.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+					</div>
+					<div id="c3" class="card">
+						<img id="playerCard3" src="img/8H.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+					</div>
+					<div id="c4" class="card">
+						<img id="playerCard4" src="img/JH.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+					</div>
+					<div id="c5" class="card">
+						<img id="playerCard5" src="img/3S.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+					</div>
+					
+<!--				<button type="button" id="playerCard1" value="btnSubmit" style="width:100px;height:150px;">Card1</button>
 					<button type="button" id="playerCard2" value="btnSubmit" style="width:100px;height:150px;">Card2</button>
 					<button type="button" id="playerCard3" value="btnSubmit" style="width:100px;height:150px;">Card3</button>
 					<button type="button" id="playerCard4" value="btnSubmit" style="width:100px;height:150px;">Card4</button>
 					<button type="button" id="playerCard5" value="btnSubmit" style="width:100px;height:150px;">Card5</button>
-					<!-- <label type="label" id="playerDeck"> OponentDeck</label> -->
-					<img id="playerDeck" src="red-knights---b.png" alt="cc" style="width:150px;height:170px;">					
+					<label type="label" id="playerDeck"> OponentDeck</label> 
+-->				
 				</div>
 
 				<br />
@@ -95,5 +127,6 @@
 	<footer>
 		<nav>	</nav>
 	</footer>
+	<script src="Proj3Speed.js"></script>
 </body>
 </html>

@@ -7,10 +7,24 @@ h1 {
     color: orange;
 	font-style: oblique;
 	font-size: 150px;
+	background: align-center
+	/* vertical-align: center; */
+}
+
+.container {
+	width: 989px;
+	margin: 0 auto;
 }
 
 .opponent {
 	text-align: center;
+	/* border: solid 1px white; */
+	/* border-radius: 3px; */
+}
+
+.oCard {
+
+	display: inline-block;
 }
 
 .gameAction {
@@ -20,3 +34,37 @@ h1 {
 .player {
 	text-align: center;
 }
+
+#playerDeck.card {
+	padding: 50px;
+}
+
+.card {
+	/* top-align: auto */
+	padding: 15px;
+	display: inline-block;
+}
+
+/* #playerCard1 { */
+	/* border: thick solid white; */
+/* } */
+/* #playerCard2 { */
+	/* border: thick solid white; */
+/* } */
+/* #playerCard3 { */
+	/* border: thick solid white; */
+/* } */
+/* #playerCard4 { */
+	/* border: thick solid white; */
+/* } */
+/* #playerCard5 { */
+	/* border: thick solid white; */
+/* } */
+
+
+
+
+
+
+
+
