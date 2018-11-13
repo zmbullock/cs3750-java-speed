@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Game{
 	
+	public int winner;
+	
 	private Deck deck;
 	
 	//the player Hand, max 5
@@ -21,12 +23,10 @@ public class Game{
 	private Stack<Card> p1_side_stack;
 	private Stack<Card> p2_side_stack;
 	
-	boolean board_locked;
-	
 	public Game(){
 		
 		deck = new Deck();
-		board_locked = false;
+		winner = 0;
 		p1_draw_stack = new Stack<Card>();
 		p2_draw_stack = new Stack<Card>();
 		for (int i = 0; i<20;i++){
@@ -39,6 +39,9 @@ public class Game{
 			p1_side_stack.push(deck.draw());
 			p2_side_stack.push(deck.draw());
 		}
+		
+		p1_hand = new Hand();
+		p2_hand = new Hand();
 		
 		game_stack1 = new Stack<Card>();
 		game_stack2 = new Stack<Card>();
@@ -68,14 +71,10 @@ public class Game{
 	}
 	
 	//performs the game move after checking if move is valid. sleep thread if board is locked
-	public void perform_move(int player, int player_hand_index, int game_stack_num) throws InterruptedException{
-		while(board_locked){
-			Thread.sleep(500);
-		}
-		board_locked = true;
+	public boolean perform_move(int player, int player_hand_index, int game_stack_num) throws InterruptedException{
+		
 		if(!check_move(player, player_hand_index, game_stack_num)){
-			board_locked = false;
-			return;
+			return false;
 		}
 		Hand hand = null;
 		if(player == 1){
@@ -92,7 +91,7 @@ public class Game{
 			stack = game_stack1;
 		}
 		stack.push(hand.remove_card(player_hand_index));
-		update_board();
+		return true;
 	}
 	
 	//returns true if the two values allow a play per the rules
@@ -138,7 +137,7 @@ public class Game{
 		
 	}
 	
-	public void draw_card(int player){
+	public boolean draw_card(int player){
 		Hand draw_hand = null;
 		Stack<Card> draw_stack = null;
 		if (player == 1){
@@ -152,8 +151,9 @@ public class Game{
 		
 		if (!draw_stack.isEmpty() && draw_hand.can_draw()){
 			draw_hand.add_card(draw_stack.pop());
-			update_board(); 
+			return true; 
 		}
+		return false;
 	}
 	
 	// this will be called any time there is a graphical change to the game
@@ -191,11 +191,14 @@ public class Game{
 		}
 		
 		if(p1_draw_stack.empty()){
-			board += "0";
+			board += "0,";
 		}
 		else {
-			board += "1";
+			board += "1,";
 		}
+		
+		board += check_for_win();
+		
 		//Middle of the return string
 		board += "T";
 		//
@@ -229,14 +232,13 @@ public class Game{
 			}
 		}
 		if(p2_draw_stack.empty()){
-			board += "0";
+			board += "0,";
 		}
 		else {
-			board += "1";
+			board += "1,";
 		}
-		
+		board += check_for_win();
 		//using interface, send current player hand, oposing player hand size, each card face up, and other decks/stacks if desired.
-		board_locked = false;
 		
 		return board;
 	}
