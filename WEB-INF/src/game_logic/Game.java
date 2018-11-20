@@ -1,3 +1,4 @@
+package game_logic;
 
 import java.util.*;
 
@@ -49,7 +50,7 @@ public class Game{
 		game_stack2.push(deck.draw());
 		// New Game Initialization done
 	}
-	
+
 	// Check if move is valid
 	public boolean check_move(int player, int player_hand_index, int game_stack_num){
 		Hand hand = null;
@@ -72,7 +73,6 @@ public class Game{
 	
 	//performs the game move after checking if move is valid. sleep thread if board is locked
 	public boolean perform_move(int player, int player_hand_index, int game_stack_num) throws InterruptedException{
-		
 		if(!check_move(player, player_hand_index, game_stack_num)){
 			return false;
 		}
@@ -94,6 +94,7 @@ public class Game{
 		return true;
 	}
 	
+        // Should be private?	@zmb
 	//returns true if the two values allow a play per the rules
 	public boolean is_valid(int i, int j){
 		if (i == (j+1)||i== (j-1)){
@@ -158,6 +159,12 @@ public class Game{
 	
 	// this will be called any time there is a graphical change to the game
 	// Player Draws a card, Valid play, (possibly if player has card selected?)
+	//
+	// String format: 
+	//   p2 deck has cards 0-1, 
+	//   p2 hand size 0-5, 
+	//   p1 side stack has cards 0-1, 
+	//
 	public String update_board(){
 		String board = new String("");
 		if(p2_draw_stack.empty()){
@@ -197,7 +204,7 @@ public class Game{
 			board += "1,";
 		}
 		
-		board += check_for_win();
+		//board += check_for_win(); //@zmb added in GameManager.java
 		
 		//Middle of the return string
 		board += "T";
@@ -237,12 +244,12 @@ public class Game{
 		else {
 			board += "1,";
 		}
-		board += check_for_win();
+		//board += check_for_win(); //@zmb - Added in GameManager.java
 		//using interface, send current player hand, oposing player hand size, each card face up, and other decks/stacks if desired.
 		
 		return board;
 	}
-	
+
 	//return 0 if no winner, 1 if p1, 2 if p2
 	public int check_for_win(){
 		if(p1_hand.get_size() == 0 && p1_draw_stack.empty()){

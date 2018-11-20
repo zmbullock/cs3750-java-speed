@@ -1,3 +1,5 @@
+package game_logic;
+
 import java.util.ArrayList;
 
 public class Hand{
