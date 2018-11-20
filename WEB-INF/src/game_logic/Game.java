@@ -166,83 +166,84 @@ public class Game{
 	//   p1 side stack has cards 0-1, 
 	//
 	public String update_board(){
-		String board = new String("");
+		StringBuilder board = new StringBuilder();
 		if(p2_draw_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
-		board += p2_hand.get_size() + ",";
+		board.append(p2_hand.get_size() + ",");
 		if(p1_side_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
-		board += game_stack1.peek().get_value() + "," + game_stack1.peek().get_suit() + ",";
-		board += game_stack2.peek().get_value() + "," + game_stack2.peek().get_suit() + ",";
+		board.append(game_stack1.peek().get_value() + "," + game_stack1.peek().get_suit() + ",");
+		board.append(game_stack2.peek().get_value() + "," + game_stack2.peek().get_suit() + ",");
 		if(p2_side_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
 		for(int i = 0; i < 5; i++){
 			if(p1_hand.get_size() > i){
-				board += p1_hand.get_value_at_index(i) + "," + p1_hand.get_suit_at_index(i) + ",";
+				board.append(p1_hand.get_value_at_index(i) + "," + p1_hand.get_suit_at_index(i) + ",");
 			}
 			else{
-				board += "0,0,";
+				board.append("0,0,");
 			}
 		}
 		
 		if(p1_draw_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
 		
 		//board += check_for_win(); //@zmb added in GameManager.java
 		
 		//Middle of the return string
-		board += "T";
+		board.append("T");
 		//
 		if(p1_draw_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
 		board += p1_hand.get_size() + ",";
 		if(p1_side_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
-		board += game_stack1.peek().get_value() + "," + game_stack1.peek().get_suit() + ",";
-		board += game_stack2.peek().get_value() + "," + game_stack2.peek().get_suit() + ",";
+		board.append(game_stack1.peek().get_value() + "," + game_stack1.peek().get_suit() + ",");
+		board.append(game_stack2.peek().get_value() + "," + game_stack2.peek().get_suit() + ",");
 		if(p2_side_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
 		for(int i = 0; i<5;i++){
 			if(p2_hand.get_size() > i){
-				board += p2_hand.get_value_at_index(i) + "," + p2_hand.get_suit_at_index(i) + ",";
+				
+				board.append(p2_hand.get_value_at_index(i) + "," + p2_hand.get_suit_at_index(i) + ",");
 			}
 			else{
-				board += "0,0,";
+				board.append("0,0,");
 			}
 		}
 		if(p2_draw_stack.empty()){
-			board += "0,";
+			board.append("0,");
 		}
 		else {
-			board += "1,";
+			board.append("1,");
 		}
 		//board += check_for_win(); //@zmb - Added in GameManager.java
 		//using interface, send current player hand, oposing player hand size, each card face up, and other decks/stacks if desired.
