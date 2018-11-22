@@ -1,27 +1,79 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Websocket Tutorial</title>
-    
-    <script type="text/javascript">
-      var websocket = new WebSocket("ws://34.218.225.144:8080/cs3750-java-speed/serverendpointdemo");
-      websocket.onmessage = function processMessage(message){
-        messagesTextArea.value += message;
-        var jsonData = JSON.parse(message.data);
-        if(jsonData.message != null){
-          messagesTextArea.value += jsonData.message + "\n";
-        }
-      }
-      
-      function sendMessage(){
-        websocket.send(messageText.value);
-        messageText.value = "";
-      }
-    </script>
-  </head>
-  <body>
-    <textarea id="messagesTextArea" readonly="readonly" rows="10" cols="45"></textarea><br/>
-    <input type="text" id="messageText" size="50" /><input type="button" value="Send" onClick="sendMessage();" />
-  </body>
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"lang="en-US">
+<head>
+
+	<link rel="stylesheet" type="text/css" href="Proj3Speed.css" />
+	
+    <title>CS3750 Speed</title>
+
+    <!--
+    Author: Doug Bentley
+    File: ~/fs1234/CS3750.html
+    Honor Code: I acknowledge that this code represents my own work: 1/30/17
+    -->
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="CS3750 Project3" />
+    <meta name="keywords" content="Speed, Card Game" />
+    <meta name="author" content="Doug Bentley" />
+    <script src="pageFunctions.js"></script>
+
+</head>
+
+<body>
+	
+			<div class="speed">
+				<h1> Speed </h1>
+			</div>
+			<div id="gameBody">
+				<!-- Oponent's Hand and Deck -->
+				<div class="opponent">
+					<!-- Oponent's Hand -->
+						<input type="image" id="opponentCard1" class="opCard" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" />
+
+						<input type="image" id="opponentCard2" class="opCard" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" />
+
+						<input type="image" id="opponentCard3" class="opCard" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" />
+
+						<input type="image" id="opponentCard4" class="opCard" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" />
+
+						<input type="image" id="opponentCard5" class="opCard" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" />
+					<!-- Opponents Deck -->
+						<input type="image" id="opponentDeck" class="opponentDeck" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" />
+				</div>	
+				
+				<!-- Game Decks and playable cards -->
+				<div class="gameAction">
+						<input type="image" id="gameDeck1" class="gameDeck" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" onclick="sendMessage('gameDeck1');" />
+						<input type="image" id="gameCard1" class="gameCard" value="1" src="images/20.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('gameCard1');" />
+						<input type="image" id="gameCard2" class="gameCard" value="2" src="images/132.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('gameCard2');" />
+						<input type="image" id="gameDeck2" class="gameDeck" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" onclick="sendMessage('gameDeck2');" />
+						<p id="info"></p>
+				</div>
+				
+				<!-- Players Hand and Deck -->				
+				<div class="player">
+					<!-- Players Deck -->				
+
+						<input type="image" id="playerDeck" class="playerDeck" src="images/red-knights---b.png" alt="cc" style="width:100px;height:150px;" onclick="sendMessage('playerDeck');"/>
+
+					<!-- Players Hand -->					
+						<input type="image" id="playerCard1" class="handCard" value="0" src="images/11.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('playerCard1');" />
+						<input type="image" id="playerCard2" class="handCard" value="1" src="images/90.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('playerCard2');" />
+						<input type="image" id="playerCard3" class="handCard" value="2" src="images/82.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('playerCard3');" />
+						<input type="image" id="playerCard4" class="handCard" value="3" src="images/111.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('playerCard4');" />
+						<input type="image" id="playerCard5" class="handCard" value="4" src="images/33.png" alt="fc" style="width:100px;height:150px;" onclick="sendMessage('playerCard5');" />
+					<br />			
+				</div>
+
+				
+				<div>
+					<button id="gameButton" class="button" type="button" value="btnSubmit" onclick="buttonClick()">Ready</button>
+				</div>
+			</div>
+</body>
 </html>
