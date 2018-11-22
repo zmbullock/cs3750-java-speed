@@ -21,14 +21,13 @@ import javax.websocket.Session;
 
 @ServerEndpoint("/serverendpointdemo")
 public class ServerEndpointDemo {
-  static Set<Session> chatroomUsers = Collections.synchronizedSet(new HashSet<Session>());
+  //static Set<Session> chatroomUsers = Collections.synchronizedSet(new HashSet<Session>());
         private static GameManager gameManager = new GameManager();
 
   //open connection to client
   @OnOpen
   public void handleOpen(Session userSession) {
-    chatroomUsers.add(userSession);
-    System.out.println("Client is now connected...");
+    //chatroomUsers.add(userSession);
 
     // @zmb
     UpdateBoardInfo boardInfo;
@@ -38,8 +37,8 @@ public class ServerEndpointDemo {
     {
       try
       {
-        userSession.getBasicRemote().sendText(boardInfo.playersBoardString);
-        boardInfo.opponentsSession.getBasicRemote().sendText(boardInfo.opponentsBoardString);
+        userSession.getBasicRemote().sendText(buildJsonData(boardInfo.playersBoardString));
+        boardInfo.opponentsSession.getBasicRemote().sendText(buildJsonData(boardInfo.opponentsBoardString));
       }
       catch (IOException ioe)
       {
@@ -51,7 +50,8 @@ public class ServerEndpointDemo {
   //exchange message with client
   @OnMessage
   public void handleMessage(String message, Session userSession) throws IOException{
-
+//test
+    userSession.getBasicRemote().sendText(buildJsonData(message));
     // @zmb
     
     UpdateBoardInfo boardInfo;
@@ -108,8 +108,8 @@ public class ServerEndpointDemo {
    
     try
     { 
-    userSession.getBasicRemote().sendText(boardInfo.playersBoardString);
-    boardInfo.opponentsSession.getBasicRemote().sendText(boardInfo.opponentsBoardString);
+    userSession.getBasicRemote().sendText(buildJsonData(boardInfo.playersBoardString));
+    boardInfo.opponentsSession.getBasicRemote().sendText(buildJsonData(boardInfo.opponentsBoardString));
     }
     catch (IOException ioe)
     {}
@@ -143,7 +143,7 @@ public class ServerEndpointDemo {
     {
       try
       {
-        boardInfo.opponentsSession.getBasicRemote().sendText(boardInfo.opponentsBoardString);
+        boardInfo.opponentsSession.getBasicRemote().sendText(buildJsonData(boardInfo.opponentsBoardString));
       }
       catch (IOException ioe)
       {
@@ -153,8 +153,9 @@ public class ServerEndpointDemo {
     }
   }
   
-  private String buildJsonData(String username, String message) {
-     JsonObject jsonObject = Json.createObjectBuilder().add("message", username+": "+message).build();
+  //private String buildJsonData(String username, String message) {
+  private String buildJsonData(String message) {
+     JsonObject jsonObject = Json.createObjectBuilder().add("message", message).build();
      StringWriter stringWriter = new StringWriter();
      try(JsonWriter jsonWriter = Json.createWriter(stringWriter)) {
        jsonWriter.write(jsonObject);

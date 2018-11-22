@@ -94,7 +94,6 @@ public class Game{
 		return true;
 	}
 	
-        // Should be private?	@zmb
 	//returns true if the two values allow a play per the rules
 	public boolean is_valid(int i, int j){
 		if (i == (j+1)||i== (j-1)){
@@ -160,13 +159,18 @@ public class Game{
 	// this will be called any time there is a graphical change to the game
 	// Player Draws a card, Valid play, (possibly if player has card selected?)
 	//
+	// Side stack: tie breaker stack
+	// Game stack: player move stack
+	// Draw stack: draw stack
+	//
 	// String format: 
-	//   p2 deck has cards 0-1, 
-	//   p2 hand size 0-5, 
-	//   p1 side stack has cards 0-1, 
+	//
+	// [0]p2_draw_stack.empty, [1]p2_hand.get_size, [2]p1_side_stack.empty, [3]game_stack1.peek.value, [4]game_stack1.peek.suit, [5]game_stack2.peek.value, [6]game_stack2.peek.suit, [7]p2_side_stack.empty, 
+	//     [8]p1_hand0.value, [9]p1_hand0.suit, [10]p1_hand1.value, [11]p1_hand1.suit, [12]p1_hand2.value, [13]p1_hand2.suit, [14]p1_hand3.value, [15]p1_hand3.suit, [16]p1_hand4.value, [17]p1_hand4.suit, 
+	//     [18]p1_draw_stack.empty, [19]winner
 	//
 	public String update_board(){
-		String board = new String("");
+		String board = "";
 		if(p2_draw_stack.empty()){
 			board += "0,";
 		}

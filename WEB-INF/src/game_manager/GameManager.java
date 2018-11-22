@@ -68,7 +68,7 @@ public class GameManager
       int playerBoardNumber = sessionToPlayerNumber.get(userSession)-1;
       int opponentBoardNumber = (playerBoardNumber == 1) ? 0 : 1;
 
-      boards[opponentBoardNumber] += ",1";
+      boards[opponentBoardNumber] += "1";
       UpdateBoardInfo retVal = new UpdateBoardInfo(boards[playerBoardNumber], boards[opponentBoardNumber], sessionToOpponent.get(userSession));
 
       sessionToGame.remove(userSession);
@@ -110,6 +110,10 @@ public class GameManager
       return null;
     }
     Game game = sessionToGame.get(userSession);
+    if(game == null)
+    {
+      return null;
+    }
     game.draw_card(sessionToPlayerNumber.get(userSession));
 
     String boardString = game.update_board();
@@ -129,6 +133,10 @@ public class GameManager
       return null;
     }
     Game game = sessionToGame.get(userSession);
+    if(game == null)
+    {
+      return null;
+    }
     
     if(!game.no_moves())
     {
@@ -155,6 +163,10 @@ public class GameManager
       return null;
     }
     Game game = sessionToGame.get(userSession);
+    if(game == null)
+    {
+      return null;
+    }
 
     if(game.no_moves())
     {
@@ -180,16 +192,16 @@ public class GameManager
     switch (winner)
     {
       case 0:
-        boards[0] += ("," + 0);
-        boards[1] += ("," + 0);
+        boards[0] += (0);
+        boards[1] += (0);
         break;
       case 1:
-        boards[0] += ("," + 1);
-        boards[1] += ("," + 2);
+        boards[0] += (1);
+        boards[1] += (2);
         break;
       case 2:
-        boards[0] += ("," + 2);
-        boards[1] += ("," + 1);
+        boards[0] += (2);
+        boards[1] += (1);
         break;
       default:
         break;
