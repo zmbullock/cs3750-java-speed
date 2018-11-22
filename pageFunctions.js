@@ -6,7 +6,7 @@ var cardChoiceBoard;
 var playerDeck;
 var gameDeck;
 var playerMoveTurn = 0;	//0 if no card clicked or message has been sent; 1 if hand card clicked; 2 if middlecard clicked
-var websocket = new WebSocket("ws://34.218.225.144:8080/cs3750-java-speed/chatroomServerEndpoint");
+var websocket = new WebSocket("ws://34.218.225.144:8080/cs3750-java-speed/serverendpointdemo");
 var str;
 var start = 0;
 

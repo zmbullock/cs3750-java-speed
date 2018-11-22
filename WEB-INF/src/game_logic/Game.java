@@ -65,7 +65,7 @@ public class Game{
 			stack = game_stack1;
 		}
 		else if (game_stack_num == 2){
-			stack = game_stack1;
+			stack = game_stack2;
 		}
 		
 		return is_valid(stack.peek().get_value(), hand.get_value_at_index(player_hand_index));
@@ -88,7 +88,7 @@ public class Game{
 			stack = game_stack1;
 		}
 		else if (game_stack_num == 2){
-			stack = game_stack1;
+			stack = game_stack2;
 		}
 		stack.push(hand.remove_card(player_hand_index));
 		return true;
