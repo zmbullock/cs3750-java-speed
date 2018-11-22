@@ -3,18 +3,23 @@
 "use strict";
 
 var str;
+var gameDeck = document.getElementById("gameDeck1");
 var card1 = document.getElementById("playerCard1");
 var card2 = document.getElementById("playerCard2");
 var card3 = document.getElementById("playerCard3");
 var card4 = document.getElementById("playerCard4");
 var card5 = document.getElementById("playerCard5");
-document.getElementById("playerCard1").style.border = "thick solid white";
-document.getElementById("playerCard2").style.border = "thick solid white";
-document.getElementById("playerCard3").style.border = "thick solid white";
-document.getElementById("playerCard4").style.border = "thick solid white";
-document.getElementById("playerCard5").style.border = "thick solid white";
+var game = false;
+var start = 0;
+document.getElementById("playerCard1").style.border = "thick solid green";
+document.getElementById("playerCard2").style.border = "thick solid green";
+document.getElementById("playerCard3").style.border = "thick solid green";
+document.getElementById("playerCard4").style.border = "thick solid green";
+document.getElementById("playerCard5").style.border = "thick solid green";
 
-var strArray = [];
+//document.getElementById("gameDeckDev").style.visibility = "hidden";
+
+var strArray = [20];
 var deckArr = ["AC", "AD", "AH", "AS", "2C", "2D", "2H", "2S", "3C", "3D", "3H", "3S",
 				"4C", "4D", "4H", "4S", "5C", "5D", "5H", "5S", "6C", "6D", "6H", "6S",
 				"7C", "7D", "7H", "7S", "8C", "8D", "8H", "8S", "9C", "9D", "9H", "9S",
@@ -28,97 +33,126 @@ var deckArr = ["AC", "AD", "AH", "AS", "2C", "2D", "2H", "2S", "3C", "3D", "3H",
 //  strArray[12]: playerCard3 value			strArray[13]: playerCard3 suit			strArray[14]: playerCard4 value
 //  strArray[15]: playerCard4 suit			strArray[16]: playerCard5 value			strArray[17]: playerCard5 suit
 //  strArray[18]: playerDeck				strArray[19]: win condition
+
+str = "1,4,0,3,2,11,1,1,8,2,1,3,3,2,13,2,7,1,1,0";
+strArr = [];
 strArr = str.split(",");
 
-if (strArr[0] == 1) {
+		document.getElementById("info").label = strArr[2];
+//strArr = ["1", "4", "0", "3", "H", "J", "D", "1", "8", "S",
+//		  "A", "H", "3", "C", "K", "C", "7", "S", "1", "0"];
+
+if (strArr[2] == "1") {
 	//document.getElementById("oponentDeck") = src(img/red-knights---b.png);
-	document.getElementById("oponentDeck").innerHTML='<img src="img/red-knights---b.png">';
+	document.getElementById("gameDeck1").style.visibility = "visible";
 }
 else {
-	document.getElementById("oponentDeck").innerHTML='<img src="none">';
-}
-for (i = 0; i < strArr[1]; i++) {
-	//document.getElementById("oponentDeck") = src(img/red-knights---b.png);
-	document.getElementById("oponentCard" + [i].toString).innerHTML='<img src="img/red-knights---b.png">';
-}
-if (strArr[2] == 1) {
-	//document.getElementById("oponentDeck") = src(img/red-knights---b.png);
-	document.getElementById("gameDeck1").innerHTML='<img src="img/red-knights---b.png">';
-}
-else {
-	document.getElementById("oponentDeck").innerHTML='<img src="none">';
+	document.getElementById("gameDeck1").style.visibility = "hidden";
 }
 
+document.getElementById("info").label = "newLabel";
 
-if (strArr[7] == 1) {
-	//document.getElementById("oponentDeck") = src(img/red-knights---b.png);
-	document.getElementById("oponentDeck").innerHTML='<img src="img/red-knights---b.png">';
+function handSelect(value) {
+	 
 }
-else {
-	document.getElementById("oponentDeck").innerHTML='<img src="none">';
-}
-
-
-if (strArr[18] == 1) {
-	//document.getElementById("oponentDeck") = src(img/red-knights---b.png);
-	document.getElementById("oponentDeck").innerHTML='<img src="img/red-knights---b.png">';
-}
-else {
-	document.getElementById("oponentDeck").innerHTML='<img src="none">';
-}
-
 
 function select(id) {
 	//alert(id);
 	console.log("Card clicked");
 	var card = id;
+	if (document.getElementById(card).style.border == "thick solid green") {
+		refresh();
+	}
 	//alert(card)
 	switch (card) {
 	//switch (document.getElementById("id").value) {
+	// case "gameDeck1":
+		// document.getElementById("info").label = strArr[2];
+		// if (strArr[2] == "1") {
+			// document.getElementById("gameDeck1").src = "img/red-knights---b.png";
+		// }
+		// else {
+			// //document.getElementById("card").style.visibility='hidden';
+			// document.getElementById("gameDeck1").src = "img/onion.png";
+		// }
+		// break;
 	case "playerCard1":
-		if (document.getElementById("playerCard1").style.border == "thick solid white") {
+		if (document.getElementById("playerCard1").style.border == "thick solid green") {
 			document.getElementById("playerCard1").style.border = "thick solid yellow";
 		}
 		else {
-			document.getElementById("playerCard1").style.border = "thick solid white";
+			document.getElementById("playerCard1").style.border = "thick solid green";
 		}
 		break;
 	case "playerCard2":
-		if (document.getElementById("playerCard2").style.border == "thick solid white") {
+		if (document.getElementById("playerCard2").style.border == "thick solid green") {
 			document.getElementById("playerCard2").style.border = "thick solid yellow";
 		}
 		else {
-			document.getElementById("playerCard2").style.border = "thick solid white";
+			document.getElementById("playerCard2").style.border = "thick solid green";
 		}
 		break;
 	case "playerCard3":
-		if (document.getElementById("playerCard3").style.border == "thick solid white") {
+		if (document.getElementById("playerCard3").style.border == "thick solid green") {
 			document.getElementById("playerCard3").style.border = "thick solid yellow";
 		}
 		else {
-			document.getElementById("playerCard3").style.border = "thick solid white";
+			document.getElementById("playerCard3").style.border = "thick solid green";
 		}
 		break;
 	case "playerCard4":
-		if (document.getElementById("playerCard4").style.border == "thick solid white") {
+		if (document.getElementById("playerCard4").style.border == "thick solid green") {
 			document.getElementById("playerCard4").style.border = "thick solid yellow";
 		}
 		else {
-			document.getElementById("playerCard4").style.border = "thick solid white";
+			document.getElementById("playerCard4").style.border = "thick solid green";
 		}
 		break;
 	case "playerCard5":
-		if (document.getElementById("playerCard5").style.border == "thick solid white") {
+		if (document.getElementById("playerCard5").style.border == "thick solid green") {
 			document.getElementById("playerCard5").style.border = "thick solid yellow";
 		}
 		else {
-			document.getElementById("playerCard5").style.border = "thick solid white";
+			document.getElementById("playerCard5").style.border = "thick solid green";
 		}
 		break;
+
+	case "gameCard1":
+	case "gameCard2":
+	case "gameDeck2":
 	default:
 		break;
 	}	
 }
+function refresh() {
+	document.getElementById("playerCard1").style.border = "thick solid green";
+	document.getElementById("playerCard2").style.border = "thick solid green";
+	document.getElementById("playerCard3").style.border = "thick solid green";
+	document.getElementById("playerCard4").style.border = "thick solid green";
+	document.getElementById("playerCard5").style.border = "thick solid green";
+}
+
+function buttonClick() {
+	game = !game;
+	start++;
+	var buttonStatus = start % 3;
+	if (buttonStatus == 0) {
+		document.getElementById("gameButton").style.backgroundColor = "#FF0000";
+		document.getElementById("gameButton").style.color = "white";
+		gameButton.innerHTML = "Start";
+	}
+	else if (buttonStatus == 1) {
+		document.getElementById("gameButton").style.backgroundColor = "yellow";
+		document.getElementById("gameButton").style.color = "black";
+		gameButton.innerHTML = "waiting...";
+}
+	else {
+		document.getElementById("gameButton").style.backgroundColor = "lightgray";
+		document.getElementById("gameButton").style.color = "black";
+		gameButton.innerHTML = "Quit";
+	}		
+}
+// OwenBenjamin
 
 
 

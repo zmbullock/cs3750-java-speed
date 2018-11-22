@@ -34,91 +34,82 @@
 	</header>
 	
 	<main>
-			<div class="speed">
+			<div id="speed" class="gameAction">
 				<h1> Speed </h1>
 			</div>
 
 
 			<form>
+				<!-- Oponents Hand and Deck -->
 				<div class="opponent">
-					<!-- <label type="label" id="oponentDeck" style="width:150px;height:100px;"> OponentDeck</label> -->
+					<!-- Oponents Hand -->
 					<div class="oCard">
-						<img id="oponentCard1" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
-					</div>
-					<div class="oCard">
-						<img id="oponentCard2" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+						<img id="oponentCard1" class="opCard" src="img/red-knights---b.png" alt="cc"> <!-- style="width:150px;height:170px;"> -->
 					</div>
 					<div class="oCard">
-						<img id="oponentCard3" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+						<img id="oponentCard2" class="opCard" src="img/red-knights---b.png" alt="cc"> <!-- style="width:150px;height:170px;"> -->
 					</div>
 					<div class="oCard">
-						<img id="oponentCard4" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+						<img id="oponentCard3" class="opCard" src="img/red-knights---b.png" alt="cc"> <!-- style="width:150px;height:170px;"> -->
 					</div>
 					<div class="oCard">
-						<img id="oponentCard5" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+						<img id="oponentCard4" class="opCard" src="img/red-knights---b.png" alt="cc"> <!-- style="width:150px;height:170px;"> -->
 					</div>
-					
-					<div id="playerDeck" class="card">
-						<img id="oponentDeck" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
-					</div>
-<!--					
-					<button type="button" id="oponentCard1" img src="testCard.jpg" alt="cc" style="width:100px;height:150px;">Card1</button>											
-					<button type="button" id="oponentCard2" value="btnSubmit" style="width:100px;height:150px;">Card2</button>
-					<button type="button" id="oponentCard3" value="btnSubmit" style="width:100px;height:150px;">Card3</button>
-					<button type="button" id="oponentCard4" value="btnSubmit" style="width:100px;height:150px;">Card4</button>
-					<button type="button" id="oponentCard5" value="btnSubmit" style="width:100px;height:150px;">Card5</button>
--->
+					<div class="oCard">
+						<img id="oponentCard5" class="opCard" src="img/red-knights---b.png" alt="cc"> <!-- style="width:150px;height:170px;"> -->
 					</div>
 
+					<!-- Oponents Deck -->
+					<div id="playerDeck" class="card">
+						<img id="0" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+				</div>	
+				
+				<!-- Game Decks and playable cards -->
 				<div class="gameAction">
-					<div id="playerDeck" class="card">
-						<img id="gameDeck1" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					<div id="gameDeckDev" class="card">
+						<img id="gameDeck1" class="gameDeck" src="img/red-knights---b.png" alt="cc" onclick="select(this.id)">  <!-- style="width:150px;height:170px;"> -->
 					</div>
 					<div class="card">
-						<img id="gameCard1" src="img/2H.png" alt="fc" style="width:100px;height:150px;">
+						<img id="gameCard1" class="gameCard" value="1" src="img/20.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
 					</div>
 					<div class="card">
-						<img id="gameCard2" src="img/KD.png" alt="fc" style="width:100px;height:150px;">
+						<img id="gameCard2" class="gameCard" value="2" src="img/132.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
 					</div>
-					<div id="playerDeck" class="card">
-						<img id="gameDeck2" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+					<div id="gameDeckDev" class="card">
+						<img id="gameDeck2" class="gameDeck" src="img/red-knights---b.png" alt="cc" onclick="select(this.id)">  <!-- style="width:150px;height:170px;"> -->
 					</div>
 				</div>
 				
+				<!-- Players Hand and Deck -->				
 				<div class="player">
+					<!-- Players Deck -->				
 					<div id="playerDeck" class="card">
-						<img id="oponentDeck" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
+						<img id="playerDeck" src="img/red-knights---b.png" alt="cc" style="width:150px;height:170px;">
 					</div>
-					
+
+					<!-- Players Hand -->					
 					<div id="c1" class="card">
-						<img id="playerCard1" src="img/AS.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+						<img id="playerCard1" class="handCard" value="0" src="img/11.png" alt="fc" style="width:100px;height:150px;" onclick="handSelect(this.value); select(this.id); sendMessage('playerCard1');">
 					</div>
 					<div id="c2" class="card">
-						<img id="playerCard2" src="img/9D.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+						<img id="playerCard2" class="handCard" value="1" src="img/90.png" alt="fc" style="width:100px;height:150px;" onclick="handSelect(this.value); select(this.id); sendMessage('playerCard2');">
 					</div>
 					<div id="c3" class="card">
-						<img id="playerCard3" src="img/8H.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+						<img id="playerCard3" class="handCard" value="2" src="img/82.png" alt="fc" style="width:100px;height:150px;" onclick="handSelect(this.value); select(this.id); sendMessage('playerCard3');">
 					</div>
 					<div id="c4" class="card">
-						<img id="playerCard4" src="img/JH.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+						<img id="playerCard4" class="handCard" value="3" src="img/111.png" alt="fc" style="width:100px;height:150px;" onclick="handSelect(this.value); select(this.id); sendMessage('playerCard4');">
 					</div>
 					<div id="c5" class="card">
-						<img id="playerCard5" src="img/3S.png" alt="fc" style="width:100px;height:150px;" onclick="select(this.id)">
+						<img id="playerCard5" class="handCard" value="4" src="img/33.png" alt="fc" style="width:100px;height:150px;" onclick="handSelect(this.value); select(this.id); sendMessage('playerCard5');">
 					</div>
-					
-<!--				<button type="button" id="playerCard1" value="btnSubmit" style="width:100px;height:150px;">Card1</button>
-					<button type="button" id="playerCard2" value="btnSubmit" style="width:100px;height:150px;">Card2</button>
-					<button type="button" id="playerCard3" value="btnSubmit" style="width:100px;height:150px;">Card3</button>
-					<button type="button" id="playerCard4" value="btnSubmit" style="width:100px;height:150px;">Card4</button>
-					<button type="button" id="playerCard5" value="btnSubmit" style="width:100px;height:150px;">Card5</button>
-					<label type="label" id="playerDeck"> OponentDeck</label> 
--->				
+		
 				</div>
 
 				<br />
 
-				<div>
-					<button type="button" name="btnSubmit" value="btnSubmit">Start Game</button>
+				<div >
+					<button id="gameButton" class="button" type="button" value="btnSubmit" onClick="buttonClick()">Ready</button>
 				</div>
 			</form>
 
